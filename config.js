@@ -91,9 +91,9 @@ const CONFIG = {
 	// ┬  ┬┌─┐┌┬┐┌─┐
 	// │  │└─┐ │ └─┐
 	// ┴─┘┴└─┘ ┴ └─┘
-
+/*
 	// First Links Container
-	firstlistsContainer: [
+	 firstlistsContainer: [
 		{
 			icon: 'music',
 			id: '1',
