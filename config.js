@@ -30,44 +30,79 @@
             height: 100%;
             background: url('https://www.transparenttextures.com/patterns/noisy-net.png');
             opacity: 0.04;
-            z-index: 0;
+            z-index: -1;
         }
         main {
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 80vh;
+        }
+        .bias-container {
+            max-width: 700px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .bias-title {
+            font-size: 2.25rem; /* Increased size */
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .bias-solution {
+            font-size: 1.25rem; /* Increased size */
+            line-height: 1.6;
+        }
+        #info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(245, 245, 220, 0.2);
+            width: 100%;
+            max-width: 800px;
         }
         .weather-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.5rem;
         }
         .weather-icon {
-            width: 80px;
-            height: 80px;
+            width: 40px; /* Adjusted size */
+            height: 40px; /* Adjusted size */
         }
         .temperature {
-            font-size: 4rem;
+            font-size: 1.25rem; /* Adjusted size */
             font-weight: 700;
-            line-height: 1;
         }
-        .quote {
-            max-width: 600px;
+        #time, #date {
             font-size: 1.25rem;
-            font-style: italic;
         }
     </style>
 </head>
 <body>
 
-    <main id="content" class="flex flex-col items-center justify-center">
-        <div id="weather" class="weather-container">
-            <!-- Weather data will be injected here -->
+    <main id="content">
+        <div id="bias-container" class="bias-container">
+            <!-- Bias and solution will be injected here -->
         </div>
-        <p id="quote" class="quote">
-            <!-- Quote will be injected here -->
-        </p>
+
+        <div id="info-bar">
+            <div id="weather" class="weather-container">
+                <!-- Weather data will be injected here -->
+            </div>
+            <div id="time">
+                <!-- Time will be injected here -->
+            </div>
+            <div id="date">
+                <!-- Date will be injected here -->
+            </div>
+        </div>
     </main>
 
     <script>
@@ -81,33 +116,74 @@
             defaultLongitude: '-81.0912', // Savannah, GA Longitude
         };
 
-        const QUOTES = [
-            "The secret of getting ahead is getting started.",
-            "The best way to predict the future is to create it.",
-            "The only limit to our realization of tomorrow will be our doubts of today.",
-            "Do not wait to strike till the iron is hot; but make it hot by striking.",
-            "The man who has confidence in himself gains the confidence of others.",
-            "What we fear doing most is usually what we most need to do.",
-            "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-            "The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence.",
-            "A man is not finished when he is defeated. He is finished when he quits.",
-            "The successful warrior is the average man, with laser-like focus.",
-            "Strength does not come from physical capacity. It comes from an indomitable will.",
-            "It is not the mountain we conquer, but ourselves."
-            
+        // Extracted and refined behavioral biases
+        const BIASES = [
+            {
+                bias: "Action Bias",
+                solution: "We have a tendency to favor action over inaction. DO NOTHING when there is no change in signal and TAKE ACTION only when the signal changes."
+            },
+            {
+                bias: "Availability Heuristic",
+                solution: "We tend to use information that comes to mind quickly. Counter this by consulting a robust Quantitative and Fundamental Research Summary daily."
+            },
+            {
+                bias: "Confirmation Bias",
+                solution: "We tend to favor information that confirms our existing beliefs. Avoid this by reviewing every meaningful economic release in a daily, unbiased analysis."
+            },
+            {
+                bias: "Disposition Effect",
+                solution: "We tend to sell winning assets too early and hold losing assets too long. Use a Top-Down or Bottom-Up approach to block out noise and focus on the long-term trend."
+            },
+            {
+                bias: "Hindsight Bias",
+                solution: "We tend to believe that past events were more predictable than they actually were. Combat this by using quantitative signals and forward-thinking long term goals."
+            },
+            {
+                bias: "Hyperbolic Discounting",
+                solution: "We're inclined to choose smaller, immediate rewards over larger rewards that come later. Avoid frameworks that try to predict every market wiggle and focus on long-term strategy."
+            },
+            {
+                bias: "Illusion of Explanatory Depth",
+                solution: "We often believe we understand complex topics more than we actually do. Remind yourself that narrow social media topics aren't the only drivers of asset markets by reviewing broader data."
+            },
+            {
+                bias: "Optimism Bias",
+                solution: "We tend to be overly optimistic about outcomes. It's better to be the second investor in a confirmed trade than the first in a trade that may not pan out."
+            },
+            {
+                bias: "Recency Bias",
+                solution: "We give too much weight to recent events. Make only marginal changes to your strategy based on new data, rather than making wholesale changes."
+            },
+            {
+                bias: "Sunk Cost Fallacy",
+                solution: "We irrationally follow through on something because we've already invested in it. Use risk management signals to dispassionately cut small losses before they become big ones."
+            },
+             {
+                bias: "Myopic Loss Aversion",
+                solution: "We focus too much on short-term results and overreact to losses. Use risk management signals that advise doing nothing when there is no signal change, and taking action only when there is."
+            },
+            {
+                bias: "Negativity Bias",
+                solution: "We give more weight to negative experiences than positive ones. A risk management process should override this disposition, keeping you invested until signals instruct otherwise."
+            },
+            {
+                bias: "Illusion of Validity",
+                solution: "We have overconfidence in our ability to predict outcomes from a set of data. Rely on statistical models and actively seek out disconfirming evidence."
+            },
+            {
+                bias: "Zero-Risk Bias",
+                solution: "We tend to prefer options that eliminate a risk completely, even if it's not the most effective choice. Evaluate risk-reduction options based on their total expected value, not just the elimination of a single risk."
+            }
         ];
 
         // --- ELEMENTS ---
         const weatherElement = document.getElementById('weather');
-        const quoteElement = document.getElementById('quote');
+        const biasContainerElement = document.getElementById('bias-container');
+        const timeElement = document.getElementById('time');
+        const dateElement = document.getElementById('date');
 
         // --- FUNCTIONS ---
 
-        /**
-         * Fetches and displays the weather.
-         * @param {number} lat - Latitude.
-         * @param {number} lon - Longitude.
-         */
         async function getWeather(lat, lon) {
             const apiKey = CONFIG.weatherKey;
             const unit = CONFIG.weatherUnit === 'F' ? 'imperial' : 'metric';
@@ -116,87 +192,56 @@
 
             try {
                 const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`Weather data not found. Status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`Weather data not found. Status: ${response.status}`);
                 const data = await response.json();
                 displayWeather(data);
             } catch (error) {
                 console.error('Error fetching weather:', error);
-                weatherElement.innerHTML = `<p>Could not fetch weather data.</p>`;
+                weatherElement.innerHTML = `<p>Weather unavailable</p>`;
             }
         }
 
-        /**
-         * Displays the fetched weather data on the page.
-         * @param {object} data - The weather data from the API.
-         */
         function displayWeather(data) {
             const temp = Math.round(data.main.temp);
             const iconCode = data.weather[0].icon;
-            const description = data.weather[0].description;
             const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
             weatherElement.innerHTML = `
-                <img src="${iconUrl}" alt="${description}" class="weather-icon">
+                <img src="${iconUrl}" alt="${data.weather[0].description}" class="weather-icon">
                 <div class="temperature">${temp}°${CONFIG.weatherUnit}</div>
             `;
         }
 
-        /**
-         * Displays a daily quote.
-         */
-        function displayDailyQuote() {
+        function displayDailyBias() {
             const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-            const quoteIndex = dayOfYear % QUOTES.length;
-            quoteElement.textContent = `"${QUOTES[quoteIndex]}"`;
+            const biasIndex = dayOfYear % BIASES.length;
+            const selectedBias = BIASES[biasIndex];
+
+            biasContainerElement.innerHTML = `
+                <h2 class="bias-title">${selectedBias.bias}</h2>
+                <p class="bias-solution">${selectedBias.solution}</p>
+            `;
         }
 
-        /**
-         * Gets user's location or uses default.
-         */
+        function displayDateTime() {
+            const now = new Date();
+            const timeOptions = { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true };
+            const dateOptions = { timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
+            dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+
         function initializeWeather() {
-            if (CONFIG.trackLocation && navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        getWeather(position.coords.latitude, position.coords.longitude);
-                    },
-                    (error) => {
-                        // This block handles geolocation errors, like permission denied.
-                        let warningMessage = 'Could not get location. ';
-                        switch(error.code) {
-                            case error.PERMISSION_DENIED:
-                                warningMessage += "Permission denied. ";
-                                break;
-                            case error.POSITION_UNAVAILABLE:
-                                warningMessage += "Location information is unavailable. ";
-                                break;
-                            case error.TIMEOUT:
-                                warningMessage += "The request to get location timed out. ";
-                                break;
-                            default:
-                                warningMessage += "An unknown error occurred. ";
-                                break;
-                        }
-                        warningMessage += 'Falling back to default location.';
-                        console.warn(warningMessage);
-                        getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
-                    }
-                );
-            } else {
-                 if (CONFIG.trackLocation) {
-                    console.warn('Geolocation is not supported by this browser, using default location.');
-                 }
-                // If tracking is off, or geolocation is not supported, use the default location.
-                getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
-            }
+            getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
         }
-
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             initializeWeather();
-            displayDailyQuote();
+            displayDailyBias();
+            displayDateTime(); // Initial call
+            setInterval(displayDateTime, 1000); // Update time every second
         });
 
     </script>
