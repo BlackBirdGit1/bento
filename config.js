@@ -42,46 +42,46 @@
             height: 80vh;
         }
         .bias-container {
-            max-width: 700px;
+            max-width: 900px; /* Increased width for larger text */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         .bias-title {
-            font-size: 2.25rem; /* Increased size */
+            font-size: 3.5rem; /* Made significantly larger */
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         .bias-solution {
-            font-size: 1.25rem; /* Increased size */
+            font-size: 1.75rem; /* Made significantly larger */
             line-height: 1.6;
         }
         #info-bar {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem; /* Increased gap */
             padding-top: 1.5rem;
             border-top: 1px solid rgba(245, 245, 220, 0.2);
             width: 100%;
-            max-width: 800px;
+            max-width: 900px; /* Increased width */
         }
         .weather-container {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         .weather-icon {
-            width: 40px; /* Adjusted size */
-            height: 40px; /* Adjusted size */
+            width: 50px; /* Increased size */
+            height: 50px; /* Increased size */
+        }
+        .temperature, #time, #date {
+            font-size: 1.5rem; /* Increased size */
+            font-weight: normal;
         }
         .temperature {
-            font-size: 1.25rem; /* Adjusted size */
             font-weight: 700;
-        }
-        #time, #date {
-            font-size: 1.25rem;
         }
     </style>
 </head>
