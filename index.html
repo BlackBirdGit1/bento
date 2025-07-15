@@ -42,30 +42,30 @@
             height: 80vh;
         }
         .bias-container {
-            max-width: 900px; /* Increased width for larger text */
+            max-width: 1200px; /* Increased width for larger text */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         .bias-title {
-            font-size: 3.5rem; /* Made significantly larger */
+            font-size: 5rem; /* Made significantly larger */
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
         .bias-solution {
-            font-size: 1.75rem; /* Made significantly larger */
+            font-size: 2.25rem; /* Made significantly larger */
             line-height: 1.6;
         }
         #info-bar {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2.5rem; /* Increased gap */
+            gap: 3rem; /* Increased gap */
             padding-top: 1.5rem;
             border-top: 1px solid rgba(245, 245, 220, 0.2);
             width: 100%;
-            max-width: 900px; /* Increased width */
+            max-width: 1200px; /* Increased width */
         }
         .weather-container {
             display: flex;
@@ -73,11 +73,11 @@
             gap: 0.75rem;
         }
         .weather-icon {
-            width: 50px; /* Increased size */
-            height: 50px; /* Increased size */
+            width: 60px; /* Increased size */
+            height: 60px; /* Increased size */
         }
         .temperature, #time, #date {
-            font-size: 1.5rem; /* Increased size */
+            font-size: 2rem; /* Increased size */
             font-weight: normal;
         }
         .temperature {
